@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "e21ee361-261c-453c-b679-ee43c2202b8d",
+		"name": "OrtdursGateApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10711602"
+	},
+	"item": [
+		{
+			"name": "PUT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n    \"name\":\"fdsfsd\",\r\n    \"type\":3\r\n}\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7229/api/inventory/santi",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7229",
+					"path": [
+						"api",
+						"inventory",
+						"santi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7229/api/inventory/santi",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7229",
+					"path": [
+						"api",
+						"inventory",
+						"santi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n    \"name\":\"pepe\",\r\n    \"level\":3,\r\n    \"inventory\":[\r\n    {\r\n        \"name\":\"fdsfsd\",\r\n        \"type\":3\r\n    }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7229/api/inventory",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7229",
+					"path": [
+						"api",
+						"inventory"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
