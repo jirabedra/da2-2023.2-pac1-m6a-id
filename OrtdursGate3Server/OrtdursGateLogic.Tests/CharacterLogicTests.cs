@@ -52,5 +52,13 @@ namespace OrtdursGateLogic.Tests
         {
             Assert.IsNotNull(null);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GetAllCharacter_Invaid()
+        {
+
+            Assert.IsNotNull(null);
+        }
     }
 }
