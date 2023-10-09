@@ -36,5 +36,16 @@ namespace OrtdursGateLogic.Tests
             Assert.AreEqual(validCharacter.Level, createdCharacter.Level);
             Assert.AreEqual(validCharacter.Inventory.Count, createdCharacter.Inventory.Count);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void CreateCharacter_Invalid()
+        {
+            var characterRepositoryMock = new Mock<ICharacterRepository>();
+            var characterLogic = new CharacterLogic(characterRepositoryMock.Object);
+            var createdCharacter = characterLogic.CreateCharacter(null);
+            Assert.IsNotNull(createdCharacter);
+        }
+
     }
 }
