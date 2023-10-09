@@ -129,7 +129,22 @@ namespace OrtdursGateLogic.Tests
         public void UpdateInventory_Invalid()
         {
 
-            Assert.IsNotNull(null);
+            var characterRepositoryMock = new Mock<ICharacterRepository>();
+            var characterLogic = new CharacterLogic(characterRepositoryMock.Object);
+
+            var invalidCharacterName = "NonExistentCharacter";
+
+            characterRepositoryMock.Setup(repo => repo.GetCharacter(invalidCharacterName))
+                .Returns((Character)null);
+
+            var updatedInventory = new List<Item>
+        {
+            new Item { Id = Guid.NewGuid(), Name = "Staff", Type = OrtdursGateDomain.Type.Equipment },
+            new Item { Id = Guid.NewGuid(), Name = "Potion", Type = OrtdursGateDomain.Type.Consumable }
+        };
+
+            // Act
+            characterLogic.UpdateInventory(invalidCharacterName, updatedInventory);
         }
 
     }
