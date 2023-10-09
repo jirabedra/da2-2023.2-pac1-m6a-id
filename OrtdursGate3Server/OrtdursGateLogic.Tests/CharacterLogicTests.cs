@@ -89,5 +89,9 @@ namespace OrtdursGateLogic.Tests
 
         }
 
+        [TestMethod]
+        public void UpdateInventory_Valid()
+        {
+            Assert.IsNotNull(null);
+        }
     }
-}
