@@ -47,5 +47,10 @@ namespace OrtdursGateLogic.Tests
             Assert.IsNotNull(createdCharacter);
         }
 
+        [TestMethod]
+        public void GetAllCharacter_Vaid()
+        {
+            Assert.IsNotNull(null);
+        }
     }
 }
