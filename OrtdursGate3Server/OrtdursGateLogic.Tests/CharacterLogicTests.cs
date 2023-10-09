@@ -13,7 +13,6 @@ namespace OrtdursGateLogic.Tests
         {
             var characterRepositoryMock = new Mock<ICharacterRepository>();
             var characterLogic = new CharacterLogic(characterRepositoryMock.Object);
-
             var validCharacter = new Character
             {
                 CharacterId = Guid.NewGuid(),
