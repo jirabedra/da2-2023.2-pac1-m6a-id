@@ -48,7 +48,7 @@ namespace OrtdursGateLogic.Tests
         }
 
         [TestMethod]
-        public void GetAllCharacter_Vaid()
+        public void GetAllCharacterInventory_Vaid()
         {
             var characterRepositoryMock = new Mock<ICharacterRepository>();
             var characterLogic = new CharacterLogic(characterRepositoryMock.Object);
@@ -72,12 +72,22 @@ namespace OrtdursGateLogic.Tests
             Assert.AreEqual(character.Inventory.Count, inventory.Count());
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void GetAllCharacter_Invaid()
-        {
 
-            Assert.IsNotNull(null);
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void GetCharactersInventory_Invaid()
+        {
+            var characterRepositoryMock = new Mock<ICharacterRepository>();
+            var characterLogic = new CharacterLogic(characterRepositoryMock.Object);
+
+            var invalidCharacterName = "NonExistentCharacter";
+
+            characterRepositoryMock.Setup(repo => repo.GetCharacter(invalidCharacterName))
+                .Returns((Character)null);
+
+            var inventory = characterLogic.GetCharactersInventory(invalidCharacterName);
+
         }
+
     }
 }
