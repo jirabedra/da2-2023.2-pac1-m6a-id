@@ -94,4 +94,14 @@ namespace OrtdursGateLogic.Tests
         {
             Assert.IsNotNull(null);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void UpdateInventory_Invalid()
+        {
+
+            Assert.IsNotNull(null);
+        }
+
     }
+}
