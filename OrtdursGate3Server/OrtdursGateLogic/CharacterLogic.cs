@@ -30,7 +30,16 @@ namespace OrtdursGateLogic
 
         public IEnumerable<Item> GetCharactersInventory(string name)
         {
-            throw new NotImplementedException();
+            Character character = _characterRepository.GetCharacter(name);
+
+            if (character != null)
+            {
+                return character.Inventory;
+            }
+            else
+            {
+                throw new InvalidOperationException($"Character with name '{name}' not found.");
+            }
         }
 
         public Character UpdateInventory(string characterName, IEnumerable<Item> enumerable)

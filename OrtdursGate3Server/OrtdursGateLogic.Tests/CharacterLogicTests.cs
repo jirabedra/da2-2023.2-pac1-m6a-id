@@ -50,7 +50,26 @@ namespace OrtdursGateLogic.Tests
         [TestMethod]
         public void GetAllCharacter_Vaid()
         {
-            Assert.IsNotNull(null);
+            var characterRepositoryMock = new Mock<ICharacterRepository>();
+            var characterLogic = new CharacterLogic(characterRepositoryMock.Object);
+            var characterName = "TestCharacter";
+            var character = new Character
+            {
+                CharacterId = Guid.NewGuid(),
+                Name = characterName,
+                Level = 10,
+                Inventory = new List<Item>
+                {
+                    new Item { Id = Guid.NewGuid(), Name = "Sword", Type = OrtdursGateDomain.Type.Equipment },
+                    new Item { Id = Guid.NewGuid(), Name = "Sword", Type = OrtdursGateDomain.Type.Equipment },
+                }
+            };
+
+            characterRepositoryMock.Setup(repo => repo.GetCharacter(characterName))
+                .Returns(character);
+            var inventory = characterLogic.GetCharactersInventory(characterName);
+            Assert.IsNotNull(inventory);
+            Assert.AreEqual(character.Inventory.Count, inventory.Count());
         }
 
         [TestMethod]
