@@ -92,7 +92,36 @@ namespace OrtdursGateLogic.Tests
         [TestMethod]
         public void UpdateInventory_Valid()
         {
-            Assert.IsNotNull(null);
+            var characterRepositoryMock = new Mock<ICharacterRepository>();
+            var characterLogic = new CharacterLogic(characterRepositoryMock.Object);
+
+            var characterName = "TestCharacter";
+            var character = new Character
+            {
+                CharacterId = Guid.NewGuid(),
+                Name = characterName,
+                Level = 10,
+                Inventory = new List<Item>
+                {
+                    new Item { Id = Guid.NewGuid(), Name = "Sword", Type = OrtdursGateDomain.Type.Equipment },
+                    new Item { Id = Guid.NewGuid(), Name = "Shield", Type = OrtdursGateDomain.Type.Equipment }
+                }
+            };
+
+            characterRepositoryMock.Setup(repo => repo.GetCharacter(characterName))
+                .Returns(character);
+
+            var updatedInventory = new List<Item>
+            {
+                new Item { Id = Guid.NewGuid(), Name = "Staff", Type = OrtdursGateDomain.Type.Equipment },
+                new Item { Id = Guid.NewGuid(), Name = "Potion", Type = OrtdursGateDomain.Type.Consumable }
+            };
+
+            characterRepositoryMock.Setup(repo => repo.UpdateInventory(characterName, updatedInventory))
+                .Returns(character);
+            var updatedCharacter = characterLogic.UpdateInventory(characterName, updatedInventory);
+            Assert.IsNotNull(updatedCharacter);
+            Assert.AreEqual(character.Inventory.Count, updatedInventory.Count);
         }
 
         [TestMethod]
