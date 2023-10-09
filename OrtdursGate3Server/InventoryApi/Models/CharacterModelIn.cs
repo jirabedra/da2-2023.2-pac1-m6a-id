@@ -17,5 +17,15 @@ namespace InventoryApi.Models
                 Inventory = Inventory.Select(x => x.ToEntity()).ToList()
             };
         }
+
+        public static CharacterModelIn FromEntity(Character character)
+        {
+            return new CharacterModelIn
+            {
+                Name = character.Name,
+                Level = character.Level,
+                Inventory = character.Inventory.Select(ItemModelIn.FromEntity).ToList()
+            };
+        }
     }
 }

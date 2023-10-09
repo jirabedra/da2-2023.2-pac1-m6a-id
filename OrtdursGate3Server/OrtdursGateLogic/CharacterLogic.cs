@@ -20,7 +20,12 @@ namespace OrtdursGateLogic
 
         public Character CreateCharacter(Character character)
         {
-            throw new NotImplementedException();
+            if (character == null)
+            {
+                throw new ArgumentException("Character invalid");
+            }
+            return _characterRepository.CreateCharacter(character);
+            
         }
 
         public IEnumerable<Item> GetCharactersInventory(string name)

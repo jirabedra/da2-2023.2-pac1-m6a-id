@@ -11,5 +11,15 @@ namespace InventoryApi.Models
         {
             return new Item { Name = Name, Type = (OrtdursGateDomain.Type)Type };
         }
+
+        public static ItemModelIn FromEntity(Item item)
+        {
+            return new ItemModelIn
+            {
+                Name = item.Name,
+                Type = (int)item.Type
+            };
+        }
+
     }
 }
