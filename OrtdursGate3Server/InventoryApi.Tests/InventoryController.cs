@@ -1,7 +1,9 @@
+using InventoryApi.Controllers;
+
 namespace InventoryApi.Tests
 {
     [TestClass]
-    public class InventoryController
+    public class InventoryControllerTest
     {
         [TestMethod]
         public void TestGetCharacterInventory()

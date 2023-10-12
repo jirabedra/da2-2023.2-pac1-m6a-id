@@ -12,10 +12,13 @@ namespace InventoryApi.Controllers
     {
         private ICharacterLogic characterLogic;
         private DataInitializer.DataInitializer initializer;
-        public InventoryController(ICharacterLogic characterLogic, DataInitializer.DataInitializer dataInitializer)
+        public InventoryController(ICharacterLogic characterLogic, DataInitializer.DataInitializer? dataInitializer)
         {
-            initializer = dataInitializer;
-            initializer.InitializeData();
+            if(dataInitializer is not null)
+            {
+                initializer = dataInitializer;
+                initializer.InitializeData();
+            }
             this.characterLogic = characterLogic;
         }
 
